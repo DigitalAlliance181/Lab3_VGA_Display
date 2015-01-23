@@ -1,0 +1,71 @@
+Module lab3test(
+	CLOCK_50,
+	CLOCK2_50,
+
+	//SDRAM
+	DRAM_ADDR,
+	DRAM_BA,
+	DRAM_CAS_N,
+	DRAM_CKE,
+	DRAM_CLK,
+	DRAM_CS_N,
+	DRAM_DQ,
+	DRAM_LDQM,
+	DRAM_RAS_N,
+	DRAM_WE_N,
+
+	//VGA
+	VGA_B,
+	VGA_BLANK_N,
+	VGA_CLK,
+	VGA_G,
+	VGA_HS,
+	VGA_R,
+	VGA_SYNC_N,
+	VGA_VS,
+
+	//DDR3 SDRAM
+	HPS_DDR3_ADDR,
+	HPS_DDR3_BA,
+	HPS_DDR3_CAS_N,
+	HPS_DDR3_CKE,
+	HPS_DDR3_CK_N,
+	HPS_DDR3_CK_P,
+	HPS_DDR3_CS_N,
+	HPS_DDR3_DM,
+	HPS_DDR3_DQ,
+	HPS_DDR3_DQS_N,
+	HPS_DDR3_DQS_P,
+	HPS_DDR3_ODT,
+	HPS_DDR3_RAS_N,
+	HPS_DDR3_RESET_N,
+	HPS_DDR3_RZQ,
+	HPS_DDR3_WE_N,
+
+);
+
+input	CLOCK_50;
+input	CLOCK2_50;
+
+//SDRAM
+output	[12:0]	DRAM_ADDR;
+output	[1:0]	DRAM_BA;
+output		DRAM_CAS_N;
+output		DRAM_CKE;
+output		DRAM_CLK;
+output		DRAM_CS_N;
+inout		DRAM_DQ;
+output		DRAM_LDQM;
+output		DRAM_RAS_N;
+output		DRAM_UDQM;
+output		DRAM_WE_N;
+
+//VGA
+output	[7:0]	VGA_B;
+output		VGA_BLANK_N;
+output		VGA_CLK;
+output	[7:0]	VGA_G;
+output		VGA_HS;
+output	[7:0]	VGA_R;
+output		VGA_SYNC_N;
+output		VGA_VS;
