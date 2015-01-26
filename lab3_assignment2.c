@@ -38,22 +38,19 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
     int temp_x2 = rand() %239; // x cordinate of one corner of our box2
     int temp_y1 = rand() %319; // y cordinate of one corner of our box1
     int temp_y2 = rand() %239; // y cordinate of one corner of our box2
-    char text_row[50] = "Box 1 is RED and Box 2 is GREEN\0";
+    char text_legend[50] = "Box 1 is RED and Box 2 is GREEN\0";
    
     //randomly place one corner of box and then extrapolate to create the full box
     box1 = VGA_box(temp_x1, temp_y1, temp_x1+49, temp_y1+49, 0xF800); // box 1 = temp_x1, temp_y1, temp_x1+49, temp_y1+49; displays red
     box2 = VGA_box(temp_x2, temp_y2, temp_x2+49, temp_y2+49, 0x07E0); // box 2 = temp_x2, temp_y2, temp_x2+49, temp_y2+49; displays green 
   
-   VGA_text (0, 0, text_row);  
+   //create legend of the color of box and corresponding number
+    VGA_text (0, 0, text_legend);  
    
    // check to make sure that the boxes are not overlaping to beging with 
    // needs to be done after every time boxes are created
    if ( box1 and box2 overlap)
       generate new random numbers;
-
-   //create legend of the color of box and corresponding number
-   
-
    
     while(1)
     {
