@@ -1,3 +1,5 @@
+// Assignment 2: BOX GAME
+ 
 void VGA_box (int x1, int y1, int x2, int y2, short pixel_color)
 {
   int offset, row, col;
@@ -50,6 +52,8 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
       generate new random numbers;
 
    //create legend of the color of box and corresponding number
+   
+
    
     while(1)
     {
@@ -119,16 +123,22 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
             if (switch_value = 1)
               move box 2 back to original position
               and return to start of else if (switch value == 1)
+              display player one time
             if (switch_value = 2)
               move box 1 back to original position
               and return to start of else if (switch value == 2)
+               display player one time
           }           
           else
+             display player two time
             return 0;
       }
     }
    
     // Compare times
+        //display time1 on HEX2 to HEX0
+       //display time2 on HEX5 to HEX3
+   
         if (time1>time2)
           player one wins, and LED5 to LED2 light up
         if (time2>time1)
