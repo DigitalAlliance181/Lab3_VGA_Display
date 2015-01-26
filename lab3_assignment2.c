@@ -34,6 +34,7 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
   {
     volatile int*switchptr =(int*)0xFF200030; //What is the SW slider switch address for SW1?
     int switch_value;
+    int first_time = 0;
     int temp_x1 = rand() %319; // x cordinate of one corner of our box1
     int temp_x2 = rand() %239; // x cordinate of one corner of our box2
     int temp_y1 = rand() %319; // y cordinate of one corner of our box1
@@ -78,13 +79,13 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
         
         //While this switch remains on only box 1 can be moved
         when (key = 1)
-          move box right //+x direction 
+         x1++; // move box right //+x direction 
         when (key = 2)
-          move box left //-x direction
+         x1--; //move box left //-x direction
         When (key = 4)
-          move box up //+y direction
+         y1++; //move box up //+y direction
         when (key = 8)
-          move box down //-y direction
+         y1--; //move box down //-y direction
        }
       
       else if (switch_value = 1) // switch 0 is on //SW0 = box 2 selected to move
@@ -103,19 +104,19 @@ void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text
         printf("\nTime= %d seconds\n", (int) t2-t1);
         
         when (key = 1)
-          move box right //+x direction 
+          x2++; // move box right //+x direction 
         when (key = 2)
-          move box left //-x direction
+          x2--; //move box left //-x direction
         when (key = 4)
-          move box up //+y direction
+          y2++; //move box up //+y direction
         when (key = 8)
-          move box down //-y direction
+          y2--; //move box down //-y direction
           
       //when they overlap for the first time the box that was selected needs to be moved back to where it originally was so that the second player can take their turn
       // If they overlap, save the time in time1 & time2
       when (x1 == x2 && y1 == y2) // the boxes are overlaping
           // Stop the timer and save the value 
-          if (first_time)
+          if (first_time == 0)
           {
             if (switch_value = 1)
               move box 2 back to original position
