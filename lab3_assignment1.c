@@ -1,5 +1,7 @@
 int vSlope = 1; //Up is positive, down is negative
 int hSlope = 1; //Right is positive, left is negative
+int x = 5;
+int y = 5;
 char text_row[50] = "Digital Alliance\0";
 char text_bounce[50] = "Digital Swagga!\0"; // Text that bounces around the screen
 
@@ -35,6 +37,7 @@ void VGA_box (int x1, int y1, int x2, int y2, short pixel_color)
 
 void VGA_bounce (int x, int y) 
 {
+    printf("BEFORE; hSlope: %d --- vSlope: %d --- x: %d --- y: %d\n", hSlope, vSlope, x, y);
     if(x == 0 || x == 319)
       hSlope = (hSlope * -1); //change hSlope to positive or negative
      
@@ -51,7 +54,7 @@ void VGA_bounce (int x, int y)
       x++;
   else if(hSlope < 0) //hSlope is negative
       x--;
-            
+   printf("AFTER; hSlope: %d --- vSlope: %d --- x: %d --- y: %d\n", hSlope, vSlope, x, y);         
    VGA_text(x, y, text_bounce); 
 }
 
@@ -69,7 +72,7 @@ int main(void)
   
   while(1)
   {
-   VGA_bounce(5, 5); 
+   VGA_bounce(x, y); 
   }
   
   
