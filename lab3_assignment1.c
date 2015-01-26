@@ -44,15 +44,26 @@ void VGA_box (int x1, int y1, int x2, int y2, short pixel_color)
   }
 }
 
-void VGA_bounce (int x, int y, char * text_ptr)
+void VGA_bounce (int x, int y) 
 {
-  
-// Create a loop that runs forever and checks wheather or not the  x and y values are close to the edge of the screen.
-// Then based on if the x and y are at 0 or their upperbound either subtract or add to get them closer to the edge.
-// We might wanna add to both x and y to move them in a more "natural" bouncing motion.
+    if(x == 0 || x == 319)
+      hSlope = (hSlope * -1); //change hSlope to positive or negative
+     
+    if(y == 0 || y == 239)
+      vSlope = (vSlope * -1);
 
-// Should we detect when we are close to an edge?  Turn around when we are 2 pixles away from the edge?
-
+      
+   if(vSlope > 0) //vSlope is positive
+      y++;
+   else if(vSlope < 0)
+      y--;
+      
+  if(hSlope > 0) //hSlope is positive
+      x++;
+  else if(hSlope < 0) //hSlope is negative
+      x--;
+            
+   VGA_text(x, y, text_bounce); 
 }
 
 int main(void)
@@ -60,16 +71,13 @@ int main(void)
   /* create a message to be displayed on the VGA and LCD
   displays */
   char text_row[50] = "Digital Alliance\0"
-  char text_bounce[50] = "Digital Swagga!" // Text that bounces around the screen 
-  
-  /* output text message in the middle of the VGA monitor */
+  char text_bounce[50] = "Digital Swagga!\0" // Text that bounces around the screen 
+  int vSlope = 1; //Up is positive, down is negative
+  int hSlope = 1; //Right is positive, left is negative 
   VGA_text (35, 29, text_row); // are the x and y values within the new square?
-  VGA_bounce(?,?,text_bounce); // Create code to tell the  text to bounce.
   
   // Pixel Color is in Red_Green_Blue format - 0x0001.1_000.011_1.1111 = 0x1878
-  //VGA_box (1*4-2, 28*4, 79*4+1, 32*4, 0xF800); // Display Pixel X:0 to 319, 16-Bit RGB
-    // (x1=2, y1=112, x2=317, y2=128, color) and those are colums/rows to increment through, ahh  
-    
+  //VGA_box (1*4-2, 28*4, 79*4+1, 32*4, 0xF800); // Display Pixel X:0 to 319, 16-Bit RGB    
  
   //code below will fill the whole screen with red, row 0:239 and colum 0:319
   VGA_box (0*4, 0*4, 80*4-1, 60*4-1,0xF800); //Fills whole screen with a red box? Will it override?
@@ -78,8 +86,11 @@ int main(void)
   VGA_box (37*4+1, 27*4+1, 32*4+1, 32*4, 0x07E0); //Creates a green box in the center of the screen. It is not square.
   
   
-  while(1); //What is this for? I think this is where we would put the bounce code 
-  // how do we put the bounce code here?
+  while(1)
+  {
+   VGA_bounce(5, 5); 
+  }
+  
   
   return 0;
 }
