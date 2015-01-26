@@ -1,5 +1,7 @@
 int vSlope = 1; //Up is positive, down is negative
 int hSlope = 1; //Right is positive, left is negative
+char text_row[50] = "Digital Alliance\0";
+char text_bounce[50] = "Digital Swagga!\0"; // Text that bounces around the screen
 
 void VGA_text(int x, int y, char * text_ptr) //Function to send a string of text to the VGA monitor
 {
@@ -55,9 +57,7 @@ void VGA_bounce (int x, int y)
 
 int main(void)
 {
-  // create a message to be displayed on the VGA display
-  char text_row[50] = "Digital Alliance\0"
-  char text_bounce[50] = "Digital Swagga!\0" // Text that bounces around the screen  
+  // create a message to be displayed on the VGA display  
   VGA_text (35, 29, text_row);
   
   // Pixel Color is in Red_Green_Blue format - 0x0001.1_000.011_1.1111 = 0x1878
